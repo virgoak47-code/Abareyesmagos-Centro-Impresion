@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b2f27">
+  <title>Centro de Impresión Abareyesmagos</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand-mark">A</div>
+    <div><strong>Abareyesmagos</strong><span>Centro de impresión</span></div>
+    <button class="ghost" id="adminToggle">Administración</button>
+  </header>
+
+  <main>
+    <section id="customerView" class="view">
+      <div class="hero">
+        <span class="eyebrow">Rápido · Fácil · Desde tu celular</span>
+        <h1>Tus documentos,<br><em>listos para imprimir.</em></h1>
+        <p>Envía tu archivo, elige cómo lo necesitas y recibe el precio estimado antes de confirmar.</p>
+      </div>
+
+      <form id="orderForm" class="panel">
+        <h2>Solicitar impresión</h2>
+        <label class="upload" for="document">
+          <span class="upload-icon">＋</span>
+          <strong id="fileLabel">Selecciona tu documento</strong>
+          <small>PDF, JPG o PNG · Máximo 10 MB en esta demostración</small>
+          <input id="document" type="file" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png" required>
+        </label>
+
+        <div class="field-grid">
+          <label>Tipo de impresión
+            <select id="printType"><option value="bw">Blanco y negro</option><option value="color">A color</option></select>
+          </label>
+          <label>Tamaño
+            <select id="paper"><option value="carta">Carta</option><option value="oficio">Oficio</option></select>
+          </label>
+          <label>Copias
+            <input id="copies" type="number" min="1" max="100" value="1">
+          </label>
+          <label>Páginas estimadas
+            <input id="pages" type="number" min="1" max="200" value="1">
+          </label>
+        </div>
+
+        <label>Nombre para identificar tu pedido
+          <input id="customerName" type="text" maxlength="60" placeholder="Tu nombre" required>
+        </label>
+        <label>Nota (opcional)
+          <textarea id="notes" rows="2" maxlength="240" placeholder="Ej. imprimir por ambos lados"></textarea>
+        </label>
+
+        <div class="estimate">
+          <div><small>Precio estimado</small><strong id="estimate">$0.00</strong></div>
+          <small id="estimateNote">El precio final se confirma al revisar tu documento.</small>
+        </div>
+        <button class="primary" type="submit">Enviar solicitud</button>
+        <p class="fine">No pagas en línea en esta demostración. El negocio confirmará tu pedido y el importe final.</p>
+      </form>
+      <div id="confirmation" class="confirmation hidden" role="status"></div>
+    </section>
+
+    <section id="adminView" class="view hidden">
+      <div class="admin-heading">
+        <div><span class="eyebrow">Panel de control</span><h1>Pedidos</h1></div>
+        <button class="ghost" id="customerToggle">Ver portal cliente</button>
+      </div>
+      <div class="notice"><strong>Modo demostración:</strong> los pedidos se guardan solo en este navegador. Todavía no hay cuentas, nube ni recepción real de archivos.</div>
+      <div class="stats">
+        <div><small>Pendientes</small><strong id="pendingCount">0</strong></div>
+        <div><small>En proceso</small><strong id="processCount">0</strong></div>
+        <div><small>Entregados</small><strong id="doneCount">0</strong></div>
+      </div>
+      <div class="panel">
+        <div class="panel-title"><h2>Solicitudes recibidas</h2><button class="text-button" id="clearDemo">Limpiar demo</button></div>
+        <div id="ordersList" class="orders-empty">Aún no hay pedidos. Envía uno desde el portal cliente para probar el recorrido.</div>
+      </div>
+      <div class="panel">
+        <h2>Tarifas de demostración</h2>
+        <p class="muted">Son importes de ejemplo. Puedes modificarlos para probar el cálculo; todavía no son precios oficiales.</p>
+        <div class="field-grid">
+          <label>Blanco y negro por página ($)<input type="number" id="rateBw" min="0" step=".5"></label>
+          <label>Color por página ($)<input type="number" id="rateColor" min="0" step=".5"></label>
+        </div>
+        <button class="secondary" id="saveRates">Guardar tarifas</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>Centro de Impresión Abareyesmagos <span>Una forma sencilla de imprimir.</span></footer>
+  <script src="app.js"></script>
+</body>
+</html>
