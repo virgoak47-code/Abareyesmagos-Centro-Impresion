@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#073b32">
+  <meta name="description" content="Centro de Impresión Abareyesmagos. Solicita tus impresiones desde tu celular.">
+  <title>Centro de Impresión | Abareyesmagos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="topline"><span class="status-dot"></span> Atención desde tu celular <span class="topline-right">Abareyesmagos</span></div>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="Inicio Centro de Impresión">
+      <span class="brand-mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 4h12l6 6v18H8z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M20 4v7h6M12 17h10M12 21h10M12 25h6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span>
+      <span><strong>Centro de Impresión</strong><small>ABAREYESMAGOS</small></span>
+    </a>
+    <button class="admin-link hidden" id="adminToggle" type="button"><span class="lock-icon">▣</span> Administración</button>
+  </header>
+
+  <main id="clientView">
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="eyebrow-line"></span> FÁCIL · RÁPIDO · DESDE TU CELULAR</span>
+        <h1>Tus documentos,<br><em>listos para imprimir.</em></h1>
+        <p>Envía tu archivo, elige cómo lo necesitas y recibe tu folio para dar seguimiento a tu solicitud.</p>
+        <div class="hero-points"><span>✓ Sin crear cuenta</span><span>✓ Atención personalizada</span></div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-glow"></div>
+        <div class="paper paper-back"></div>
+        <div class="paper paper-front"><div class="paper-head"></div><div class="paper-line wide"></div><div class="paper-line"></div><div class="paper-line short"></div><div class="paper-chart"><i></i><i></i><i></i><i></i><i></i></div><div class="paper-line wide"></div><div class="paper-line short"></div></div>
+        <div class="art-chip"><span>✦</span> Impresión sencilla</div>
+      </div>
+    </section>
+
+    <section class="steps" aria-label="Cómo funciona">
+      <div class="step"><span class="step-num">01</span><div><b>Sube tu archivo</b><small>PDF o imagen desde tu teléfono.</small></div></div>
+      <div class="step"><span class="step-num">02</span><div><b>Elige tus opciones</b><small>Tamaño, color y cantidad.</small></div></div>
+      <div class="step"><span class="step-num">03</span><div><b>Envía tu solicitud</b><small>Mándanos tu archivo por WhatsApp.</small></div></div>
+    </section>
+
+    <section class="workspace">
+      <div class="section-heading"><div><span class="eyebrow">SOLICITUD DE IMPRESIÓN</span><h2>¿Qué necesitas imprimir?</h2><p>Completa los datos para preparar tu solicitud.</p></div><span class="secure-note">⌑ Tus archivos no se publican</span></div>
+      <div class="form-layout">
+        <form class="request-card" id="requestForm">
+          <div class="card-title"><span class="card-icon">↥</span><div><h3>1. Agrega tu documento</h3><p>Selecciona un archivo de tu dispositivo.</p></div></div>
+          <label class="upload-zone" for="fileInput" id="dropZone">
+            <input id="fileInput" type="file" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png">
+            <span class="upload-icon">↑</span><strong id="fileTitle">Toca para seleccionar tu archivo</strong>
+            <small id="fileSub">PDF, JPG o PNG · Máximo 15 MB en esta demostración</small>
+            <span class="browse-btn">Buscar archivo</span>
+          </label>
+          <div class="field-divider"></div>
+          <div class="card-title"><span class="card-icon">⚙</span><div><h3>2. Personaliza tu impresión</h3><p>Indica cómo quieres recibir tus hojas.</p></div></div>
+          <div class="field-grid">
+            <fieldset><legend>Tipo de impresión</legend><div class="choice-row">
+              <label class="choice"><input type="radio" name="color" value="bn" checked><span class="choice-box"><b>◐</b><strong>Blanco y negro</strong><small>Escala de grises</small></span></label>
+              <label class="choice"><input type="radio" name="color" value="color"><span class="choice-box"><b>◉</b><strong>A color</strong><small>Impresión a color</small></span></label>
+            </div></fieldset>
+            <div class="field-row">
+              <label for="paperSize">Tamaño de hoja</label>
+              <select id="paperSize"><option value="carta">Carta</option><option value="oficio">Oficio</option></select>
+            </div>
+            <div class="field-row">
+              <label for="pages">Páginas del documento</label>
+              <input id="pages" type="number" min="1" max="300" value="1" inputmode="numeric">
+              <small id="pagesHint">Si no sabes cuántas son, deja 1 y lo revisaremos.</small>
+            </div>
+            <div class="field-row">
+              <label for="copies">Número de copias</label>
+              <div class="stepper"><button type="button" id="minusCopies" aria-label="Quitar copia">−</button><output id="copiesOutput">1</output><button type="button" id="plusCopies" aria-label="Agregar copia">+</button></div>
+            </div>
+          </div>
+          <div class="field-divider"></div>
+          <div class="card-title"><span class="card-icon">♙</span><div><h3>3. Datos para atenderte</h3><p>Solo los usaremos para identificar tu solicitud.</p></div></div>
+          <div class="field-grid contact-grid">
+            <div class="field-row"><label for="customerName">Tu nombre</label><input id="customerName" type="text" maxlength="70" placeholder="¿Cómo te llamas?" required></div>
+            <div class="field-row"><label for="customerPhone">Teléfono (opcional)</label><input id="customerPhone" type="tel" maxlength="20" inputmode="tel" placeholder="Para contactarte"></div>
+            <div class="field-row full"><label for="notes">Indicaciones adicionales (opcional)</label><textarea id="notes" rows="2" maxlength="300" placeholder="Ej. Imprimir solo páginas 2 a 5..."></textarea></div>
+          </div>
+          <div class="form-error" id="formError" role="alert"></div>
+          <div class="total-line">Total estimado: <b id="totalInline">$0.00</b></div>
+          <button class="submit-btn" type="submit" id="submitBtn">Enviar solicitud <span>→</span></button>
+          <p class="form-footnote">Al enviar se abrirá WhatsApp con el resumen de tu pedido; ahí mismo nos compartes tu archivo.</p>
+        </form>
+
+        <aside class="summary-column">
+          <div class="summary-card">
+            <span class="eyebrow">RESUMEN</span><h3>Tu impresión</h3>
+            <div class="summary-file"><span class="file-symbol">PDF</span><div><b id="summaryFile">Sin archivo seleccionado</b><small id="summaryDetails">Agrega tu documento para comenzar</small></div></div>
+            <div class="summary-line"><span>Tipo</span><b id="summaryColor">Blanco y negro</b></div>
+            <div class="summary-line"><span>Tamaño</span><b id="summarySize">Carta</b></div>
+            <div class="summary-line"><span>Hojas estimadas</span><b id="summarySheets">1</b></div>
+            <div class="summary-line"><span>Copias</span><b id="summaryCopies">1</b></div>
+            <div class="estimate"><small>Total estimado</small><strong id="estimatedPrice">$0.00</strong><span id="estimateNote">El precio final se confirma al revisar tu archivo.</span></div>
+          </div>
+          <div class="help-card"><span class="help-icon">?</span><div><b>¿Tienes dudas?</b><p>Envía tu solicitud y el personal revisará el archivo y las opciones antes de confirmar el trabajo.</p></div></div>
+          <div class="privacy-note">♧ <span>Evita enviar documentos con contraseñas o datos bancarios.</span></div>
+        </aside>
+      </div>
+    </section>
+    <footer class="site-footer"><span>© <span id="year"></span> Centro de Impresión Abareyesmagos</span><span>Hecho para atenderte mejor.</span></footer>
+  </main>
+
+  <main id="adminView" class="admin-view hidden">
+    <section class="admin-hero"><div><span class="eyebrow">ÁREA DE TRABAJO</span><h1>Panel de <em>pedidos</em></h1><p>Administra las solicitudes registradas en este dispositivo.</p></div><div><button class="back-client" id="backClient">← Volver al portal</button> <button class="back-client hidden" id="logoutBtn" type="button">Cerrar sesión</button></div></section>
+    <section class="admin-content hidden" id="loginBox"><h2>Iniciar sesión</h2><p>Solo para el personal del negocio.</p><form id="loginForm" class="login-form"><input id="loginEmail" type="email" autocomplete="username" placeholder="Correo" required><input id="loginPass" type="password" autocomplete="current-password" placeholder="Contraseña" required><button class="submit-btn" type="submit">Entrar <span>→</span></button><div class="form-error" id="loginError" role="alert"></div></form></section>
+    <div id="adminBody">
+    <div class="demo-alert" id="adminNote">Este panel está protegido con PIN y guarda los datos solo en este dispositivo. Los pedidos de clientes te llegan por WhatsApp.</div>
+    <section class="stats-grid">
+      <article class="stat-card"><span>Solicitudes</span><strong id="statTotal">0</strong><small>Registradas en este navegador</small></article>
+      <article class="stat-card"><span>Pendientes</span><strong id="statPending">0</strong><small>Por revisar</small></article>
+      <article class="stat-card"><span>En proceso</span><strong id="statProcess">0</strong><small>En atención</small></article>
+      <article class="stat-card"><span>Entregadas</span><strong id="statDone">0</strong><small>Trabajo finalizado</small></article>
+    </section>
+    <section class="admin-content">
+      <div class="admin-section-head"><div><h2>Solicitudes recibidas</h2><p>Revisa los datos y actualiza el estado de cada pedido.</p></div><button class="secondary-btn hidden" id="refreshOrders" type="button">Actualizar ↻</button> <button class="secondary-btn" id="exportOrders">Descargar lista CSV ↓</button></div>
+      <div id="ordersList" class="orders-list"></div>
+    </section>
+    <section class="admin-content rates-content">
+      <div class="admin-section-head"><div><h2>Tarifas</h2><p>Importes por hoja usados para calcular el total estimado.</p></div></div>
+      <div class="rates-grid">
+        <label>Blanco y negro · por hoja<input id="rateBn" type="number" min="0" step=".5"></label>
+        <label>A color · por hoja<input id="rateColor" type="number" min="0" step=".5"></label>
+        <label>Adicional oficio<input id="rateLegal" type="number" min="0" step=".5"></label>
+        <button class="secondary-btn" id="saveRates">Guardar tarifas</button>
+      </div>
+    </section>
+    </div>
+    <footer class="site-footer"><span>Centro de Impresión Abareyesmagos</span><span>Panel · 0.4</span></footer>
+  </main>
+
+  <div class="modal-backdrop hidden" id="successModal" role="dialog" aria-modal="true" aria-labelledby="successTitle">
+    <div class="success-modal"><div class="success-mark">✓</div><span class="eyebrow">SOLICITUD REGISTRADA</span><h2 id="successTitle">¡Listo! Ahora mándanos tu archivo.</h2><p id="modalText">1) Abre WhatsApp y envía el resumen. 2) Adjunta tu documento en el mismo chat (o usa «Compartir archivo»).</p><div class="folio-box"><small>TU FOLIO</small><strong id="newFolio">CI-0000</strong></div><div class="modal-actions"><a class="submit-btn" id="waLink" href="#" target="_blank" rel="noopener">Abrir WhatsApp <span>→</span></a><button type="button" class="ghost-btn hidden" id="shareFile">Compartir archivo</button><button type="button" class="ghost-btn" id="copyText">Copiar resumen</button><button class="ghost-btn" id="closeModal" type="button">Cerrar</button></div><p id="shareNote" class="share-note"></p></div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
